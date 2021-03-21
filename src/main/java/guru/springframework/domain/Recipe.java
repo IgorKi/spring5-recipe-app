@@ -16,20 +16,28 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    //todo add
-    //private Difficalty difficalty;
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
-
     @Lob
     private Byte[] image;
-
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
-    private Difficulty difficulty;
+    @ManyToMany
+    @JoinTable(name = "recipe_category", joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "categoty_id"))
+    private Set<Category> category;
 
-    @Enumerated(value = EnumType.STRING)
+    public Set<Category> getCategory() {
+        return category;
+    }
+
+    public void setCategory(Set<Category> category) {
+        this.category = category;
+    }
+
     public Difficulty getDifficulty() {
         return difficulty;
     }
