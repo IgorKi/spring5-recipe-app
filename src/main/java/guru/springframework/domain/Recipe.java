@@ -27,6 +27,17 @@ public class Recipe {
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
+    private Difficulty difficulty;
+
+    @Enumerated(value = EnumType.STRING)
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
     public Set<Ingredient> getIngredients() {
         return ingredients;
     }
