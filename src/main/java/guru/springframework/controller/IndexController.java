@@ -34,8 +34,8 @@ public class IndexController {
 
         log.debug("Getting Index Page");
 
-        System.out.println("Cat ID is: " + categoryOptional.get().getId());
-        System.out.println("UOM ID is: " + unitOfMeasureOptional.get().getId());
+//        System.out.println("Cat ID is: " + categoryOptional.get().getId());
+//        System.out.println("UOM ID is: " + unitOfMeasureOptional.get().getId());
 
         return "index";
     }
