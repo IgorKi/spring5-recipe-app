@@ -27,13 +27,14 @@ public class IndexController {
     }
 
     @GetMapping({"","/","index"})
-    public String getIndexPage()
+    public String getIndexPage(Model model)
     {
         Optional<Category> categoryOptional = categoryRepository.findByDescription("American");
         Optional<UnitOfMeasure> unitOfMeasureOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
 
         log.debug("Getting Index Page");
 
+        model.addAttribute("recipes",recipeService.getRecipes());
 //        System.out.println("Cat ID is: " + categoryOptional.get().getId());
 //        System.out.println("UOM ID is: " + unitOfMeasureOptional.get().getId());
 
